@@ -1,0 +1,43 @@
+name: ci
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Python
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Python lint
+        if: hashFiles('**/*.py') != ''
+        run: |
+          python -m pip install --upgrade pip
+          pip install ruff
+          ruff check .
+
+      # Node
+      - name: Node setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Node lint
+        if: hashFiles('package.json') != ''
+        run: |
+          npm i --silent || true
+          npx -y eslint . || true
+
+      # Rust
+      - name: Rust setup
+        uses: dtolnay/rust-toolchain@stable
+      - name: Cargo check
+        if: hashFiles('**/Cargo.toml') != ''
+        run: cargo check || true
