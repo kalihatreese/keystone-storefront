@@ -28,12 +28,12 @@ jobs:
           G_BUN:    ${{ vars.GUMROAD_PRODUCT_ID_BUNDLE }}
         run: |
           set -euo pipefail
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_OVERLORD}}|\$OVERLORD|g" site/index.html || true
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_SCHOOL1}}|\$SCHOOL1|g"  site/index.html || true
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_BUNDLE}}|\$BUNDLE|g"   site/index.html || true
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_OVERLORD}}|\$G_OVER|g"  site/index.html || true
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_SCHOOL1}}|\$G_SCH|g"    site/index.html || true
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_BUNDLE}}|\$G_BUN|g"     site/index.html || true
+          sed -i "s|__STRIPE_OVERLORD__|\$OVERLORD|g" site/index.html || true
+          sed -i "s|__STRIPE_SCHOOL1__|\$SCHOOL1|g"  site/index.html || true
+          sed -i "s|__STRIPE_BUNDLE__|\$BUNDLE|g"   site/index.html || true
+          sed -i "s|__GUM_OVERLORD__|\$G_OVER|g"  site/index.html || true
+          sed -i "s|__GUM_SCHOOL1__|\$G_SCH|g"    site/index.html || true
+          sed -i "s|__GUM_BUNDLE__|\$G_BUN|g"     site/index.html || true
       - uses: actions/configure-pages@v5
         with:
           enablement: true
