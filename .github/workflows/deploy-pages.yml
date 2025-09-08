@@ -1,10 +1,20 @@
 name: deploy-pages
-on: { push: { branches: [ main ] }, workflow_dispatch: }
-permissions: { contents: read, pages: write, id-token: write }
-concurrency: { group: pages, cancel-in-progress: true }
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
 jobs:
   deploy:
-    environment: { name: github-pages, url: ${{ steps.deployment.outputs.page_url }} }
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -18,15 +28,17 @@ jobs:
           G_BUN:    ${{ vars.GUMROAD_PRODUCT_ID_BUNDLE }}
         run: |
           set -euo pipefail
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_OVERLORD}}|$OVERLORD|g" site/index.html
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_SCHOOL1}}|$SCHOOL1|g"  site/index.html
-          sed -i "s|\${{STRIPE_PAYMENT_LINK_BUNDLE}}|$BUNDLE|g"   site/index.html
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_OVERLORD}}|$G_OVER|g"  site/index.html
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_SCHOOL1}}|$G_SCH|g"    site/index.html
-          sed -i "s|\${{GUMROAD_PRODUCT_ID_BUNDLE}}|$G_BUN|g"     site/index.html
+          sed -i "s|\${{STRIPE_PAYMENT_LINK_OVERLORD}}|\$OVERLORD|g" site/index.html || true
+          sed -i "s|\${{STRIPE_PAYMENT_LINK_SCHOOL1}}|\$SCHOOL1|g"  site/index.html || true
+          sed -i "s|\${{STRIPE_PAYMENT_LINK_BUNDLE}}|\$BUNDLE|g"   site/index.html || true
+          sed -i "s|\${{GUMROAD_PRODUCT_ID_OVERLORD}}|\$G_OVER|g"  site/index.html || true
+          sed -i "s|\${{GUMROAD_PRODUCT_ID_SCHOOL1}}|\$G_SCH|g"    site/index.html || true
+          sed -i "s|\${{GUMROAD_PRODUCT_ID_BUNDLE}}|\$G_BUN|g"     site/index.html || true
       - uses: actions/configure-pages@v5
-        with: { enablement: true }
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
-        with: { path: ./site }
+        with:
+          path: ./site
       - id: deployment
         uses: actions/deploy-pages@v4
