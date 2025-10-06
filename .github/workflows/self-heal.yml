@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue with logs
-        uses: peter-evans/create-issue-from-file@v5
+        uses: peter-evans/create-issue-from-file@v6
         with:
           title: "CI failed on ${{ github.event.workflow_run.head_branch }}"
           content-filepath: "./.github/ISSUE_TEMPLATES/ci_failure.md"
