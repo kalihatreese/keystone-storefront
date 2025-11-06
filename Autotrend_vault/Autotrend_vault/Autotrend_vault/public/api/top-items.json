@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "mutation": "55ee47d81c2c",
+  "date": "1970-01-01",
+  "items": [
+    {
+      "sku": "DEMO-001",
+      "title": "Demo Product",
+      "price": 19.99,
+      "category": "general",
+      "image": "https://picsum.photos/seed/demo/640/360",
+      "description": "Autotrend demo item",
+      "stock": "inferred",
+      "status": "active"
+    }
+  ]
+}

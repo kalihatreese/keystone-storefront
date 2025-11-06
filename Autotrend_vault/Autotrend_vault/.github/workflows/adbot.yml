@@ -1,0 +1,54 @@
+name: AutoTrend AdBot
+on:
+  schedule: [{cron: "*/15 * * * *"}]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  advertise:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # for gh gist
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python AdBot (best effort)
+        uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install requests
+      - run: python autotrend_vault_adbot.py || true
+
+      - name: Compose ad content
+        id: compose
+        run: |
+          TS="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          if [ -f vault_ingest.txt ]; then LINES="$(sed '/^$/d' vault_ingest.txt)"; else LINES="Vault is empty"; fi
+          printf "🧬 AutoTrend Ad (%s)\n\n%s\n" "$TS" "$LINES" > ad.txt
+          echo "ts=$TS" >> $GITHUB_OUTPUT
+
+      - name: Post Gist (guaranteed)
+        run: |
+          gh gist create --public -f ad.txt ad.txt
+
+      - name: Update storefront signal (signals.json)
+        run: |
+          TS="${{ steps.compose.outputs.ts }}"
+          TICKERS="$(head -n 3 vault_ingest.txt 2>/dev/null || echo "SYS\nAUTOTREND\n—")"
+          printf '{"updated":"%s","items":[' "$TS" > signals.json
+          i=0; while IFS= read -r s; do
+            [ -z "$s" ] && continue
+            [ $i -gt 0 ] && printf ',' >> signals.json
+            printf '\n  {"t":"%s","s":"AT"}' "$(printf '%s' "$s" | sed 's/"/\"/g')"
+            i=$((i+1))
+          done <<<"$TICKERS"
+          printf '\n]}\n' >> signals.json
+
+      - name: Commit signals.json
+        run: |
+          git config user.name "autotrend-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add signals.json
+          git commit -m "autotrend: refresh signals" || exit 0
+          git push

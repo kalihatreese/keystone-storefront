@@ -1,0 +1,42 @@
+# ReeseLimitedLLC Proprietary Software License
+**Copyright © 2025 ReeseLimitedLLC / Jonathan Reese.  
+All Rights Reserved.**
+
+This repository and its contents are the exclusive property of **ReeseLimitedLLC** and are protected by United States and international copyright, trademark, and trade-secret laws.
+
+## 1. Grant of License
+You are granted a limited, non-exclusive, non-transferable, revocable license to download and use the Software solely for evaluation or personal study unless otherwise authorized in writing by ReeseLimitedLLC.
+
+## 2. Restrictions
+You may **not**:
+- Copy, modify, merge, publish, distribute, sublicense, sell, or lease any portion of the Software.  
+- Reverse engineer, decompile, or attempt to derive the source code if distributed in compiled form.  
+- Remove or alter any copyright, trademark, or proprietary notice.  
+- Use the Software to train competing AI models, resell services, or create derivative works without written consent.
+
+## 3. Ownership
+All intellectual-property rights in and to the Software remain with ReeseLimitedLLC.  
+No ownership or title passes to you.
+
+## 4. Termination
+This license terminates automatically if you breach any term.  
+Upon termination, you must cease use and destroy all copies.
+
+## 5. Disclaimer of Warranty
+THE SOFTWARE IS PROVIDED **“AS IS”** WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+
+## 6. Limitation of Liability
+IN NO EVENT SHALL REESELIMITEDLLC OR ITS AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE.
+
+## 7. Governing Law
+This license is governed by the laws of the **State of North Carolina, USA**, without regard to conflict-of-law principles.  
+Venue lies exclusively in **Wayne County, North Carolina**.
+
+## 8. Contact
+**ReeseLimitedLLC**  
+Email: kalihatreese@gmail.com  
+Website: [https://www.keystoneaiml.com](https://www.keystoneaiml.com)
+
+---
+
+**SPDX-License-Identifier:** `LicenseRef-ReeseLimitedLLC-Proprietary`

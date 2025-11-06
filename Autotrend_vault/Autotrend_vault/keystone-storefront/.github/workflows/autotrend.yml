@@ -1,0 +1,15 @@
+name: Autotrend Workflow
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Run Autotrend
+        run: python autotrend.py

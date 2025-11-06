@@ -1,0 +1,45 @@
+// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autotrend Store</title>
+  <script src="https://www.paypal.com/sdk/js?client-id=EJ6GgmbtePugld-O7_q0knL-NFVczKgO2JQMUcIkugElZgOpvCQSRTOjGQ-LLuH4z9zj7WpEXgQkKfZi&currency=USD"></script>
+</head>
+<body>
+<h1>🔥 Autotrend Storefront</h1>
+<div id="products"></div>
+<script>
+Promise.all([
+  fetch('./storefront/products/top50.json').then(r => r.json()),
+  fetch('./storefront/products/electronics25.json').then(r => r.json())
+]).then(([top50, electronics]) => {
+  const all = [...top50, ...electronics];
+  document.getElementById('products').innerHTML = all.map(p => {
+    const containerId = `paypal-button-container-${p.id}`;
+    return `
+      <div style="border:1px solid #ccc;padding:10px;margin:10px;">
+        <img src="${p.image || 'https://i.imgur.com/fallback.jpg'}" width="100"><br>
+        <strong>${p.name}</strong><br>
+        $${p.price}<br>
+        <div id="${containerId}"></div>
+        <script>
+          paypal.Buttons({
+            createOrder: (data, actions) => actions.order.create({
+              purchase_units: [{
+                amount: { value: '${p.price}' },
+                description: '${p.name}'
+              }]
+            }),
+            onApprove: (data, actions) => actions.order.capture().then(details => {
+              alert('✅ Transaction completed by ' + details.payer.name.given_name);
+            })
+          }).render('#${containerId}');
+        </script>
+      </div>
+    `;
+  }).join('');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+
+[
+  { "id": 1, "name": "Fallback Item A", "price": 19.99, "image": "https://via.placeholder.com/100" },
+  { "id": 2, "name": "Fallback Item B", "price": 29.99, "image": "https://via.placeholder.com/100" }
+]

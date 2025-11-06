@@ -1,0 +1,505 @@
+{
+  "date": "2025-10-11",
+  "items": [
+    {
+      "title": "GENERAL_0",
+      "price": 10.67,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_1",
+      "price": 11.02,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_2",
+      "price": 13,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_3",
+      "price": 13.6,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_4",
+      "price": 14.19,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_5",
+      "price": 15.96,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_6",
+      "price": 16.9,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_7",
+      "price": 17.41,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_8",
+      "price": 18.09,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_9",
+      "price": 19.25,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_10",
+      "price": 20.93,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_11",
+      "price": 21.08,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_12",
+      "price": 22.8,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_13",
+      "price": 22.79,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_14",
+      "price": 23.91,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_15",
+      "price": 25.13,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_16",
+      "price": 26.16,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_17",
+      "price": 27.13,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_18",
+      "price": 28.97,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_19",
+      "price": 28.04,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_20",
+      "price": 30.84,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_21",
+      "price": 30.29,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_22",
+      "price": 33.09,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_23",
+      "price": 33.7,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_24",
+      "price": 34.15,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_25",
+      "price": 35.84,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_26",
+      "price": 36.98,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_27",
+      "price": 37.15,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_28",
+      "price": 38.8,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_29",
+      "price": 39.58,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_30",
+      "price": 38.06,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_31",
+      "price": 41.72,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_32",
+      "price": 41.62,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_33",
+      "price": 42.41,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_34",
+      "price": 44.3,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_35",
+      "price": 45.95,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_36",
+      "price": 43.61,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_37",
+      "price": 47.38,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_38",
+      "price": 49.43,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_39",
+      "price": 48.84,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_40",
+      "price": 51.55,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_41",
+      "price": 51.3,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_42",
+      "price": 52.28,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_43",
+      "price": 53.07,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_44",
+      "price": 54.16,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_45",
+      "price": 55.04,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_46",
+      "price": 56.57,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_47",
+      "price": 56.14,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_48",
+      "price": 58.78,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_49",
+      "price": 58.67,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_50",
+      "price": 60.72,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_51",
+      "price": 61.76,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_52",
+      "price": 64.5,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_53",
+      "price": 64.94,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_54",
+      "price": 62.35,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_55",
+      "price": 63.97,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_56",
+      "price": 66.27,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_57",
+      "price": 66.1,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_58",
+      "price": 69.43,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_59",
+      "price": 70.36,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_60",
+      "price": 69.61,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_61",
+      "price": 71.44,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_62",
+      "price": 73.15,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_63",
+      "price": 71.7,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_64",
+      "price": 74.96,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_65",
+      "price": 75.94,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_66",
+      "price": 77.68,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_67",
+      "price": 74.7,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_68",
+      "price": 78.56,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_69",
+      "price": 80.54,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_70",
+      "price": 79.07,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_71",
+      "price": 81.51,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_72",
+      "price": 80.27,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_73",
+      "price": 83.31,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_74",
+      "price": 84.08,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_75",
+      "price": 81.41,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_76",
+      "price": 86.43,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_77",
+      "price": 85.29,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_78",
+      "price": 87.65,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_79",
+      "price": 89.22,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_80",
+      "price": 90.88,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_81",
+      "price": 91.77,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_82",
+      "price": 91.34,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_83",
+      "price": 93.83,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_84",
+      "price": 95.68,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_85",
+      "price": 97.29,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_86",
+      "price": 96.58,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_87",
+      "price": 94.25,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_88",
+      "price": 98.68,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_89",
+      "price": 98.54,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_90",
+      "price": 97.12,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_91",
+      "price": 96.48,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_92",
+      "price": 99.86,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_93",
+      "price": 104.67,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_94",
+      "price": 101.88,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_95",
+      "price": 107.43,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_96",
+      "price": 102.86,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_97",
+      "price": 107.07,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_98",
+      "price": 108.16,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_99",
+      "price": 109.33,
+      "category": "electronics"
+    }
+  ]
+}

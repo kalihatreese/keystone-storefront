@@ -1,0 +1,8 @@
+body{font-family:system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;padding:0;background:#0b0f13;color:#e5e7eb}
+a{color:#93c5fd;text-decoration:none}
+.container{max-width:1000px;margin:0 auto;padding:24px}
+.card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:1px solid #374151;background:#0ea5e9;color:white}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+.badge{font-size:12px;padding:2px 8px;border:1px solid #374151;border-radius:999px}

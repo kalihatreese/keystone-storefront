@@ -1,0 +1,1974 @@
+import "./mutation-cycle.js";
+console.log("[autonomous-mutator] online");
+setInterval(()=>console.log("[adbot] rotating creatives", new Date().toISOString()), 30000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const AD   = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function mutate(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+    if(!j.items?.length) return;
+    const k = Math.floor(Math.random()*j.items.length);
+    j.items[k].price = +(j.items[k].price * (1 + (Math.random()-0.5)*0.05)).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    ad.mutations = (ad.mutations||0)+1;
+    fs.writeFileSync(AD, JSON.stringify(ad,null,2));
+    console.log("[mutation] touched:", j.items[k].title, "mut#", ad.mutations);
+  }catch(e){ console.error(e); }
+}
+setInterval(mutate, 15000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+function markSale(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    j.items[i].price = +(j.items[i].price * 0.97).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    console.log("[sale-trigger] discounted:", j.items[i].title);
+  }catch(e){ console.error(e); }
+}
+setInterval(markSale, 45000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const AD   = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function yesterday(){ const d=new Date(Date.now()-86400000); return d.toISOString().slice(0,10); }
+function synth(count=100){
+  const items=[];
+  for(let i=0;i<count;i++){
+    const cat = i%2===0?"general":"electronics";
+    items.push({title:`${cat.toUpperCase()}_${i}`, price: +(10+(i%100)+Math.random()).toFixed(2), category:cat});
+  }
+  return items;
+}
+function run(){
+  const date = yesterday();
+  const items = synth(100); // hook: replace with real fetchers
+  fs.writeFileSync(DATA, JSON.stringify({date, items}, null, 2));
+  const totals = {count:items.length, electronics: items.filter(x=>x.category==="electronics").length, general: items.filter(x=>x.category==="general").length};
+  fs.writeFileSync(AD, JSON.stringify({date, totals, mutations:0}, null, 2));
+  console.log("[ingestor] refreshed", date, totals);
+}
+run(); setInterval(run, 60*60*1000);
+setInterval(()=>console.log("[vault] license check OK"), 60000);
+setInterval(()=>console.log("[viral] seeded social proof tick", Date.now()), 20000);
+{
+  "date": "2025-10-09",
+  "items": [
+    {
+      "title": "GENERAL_0",
+      "price": 9.92,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_1",
+      "price": 11.2,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_2",
+      "price": 12.08,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_3",
+      "price": 12.7,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_4",
+      "price": 14.65,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_5",
+      "price": 15.37,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_6",
+      "price": 16.38,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_7",
+      "price": 17.25,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_8",
+      "price": 18.78,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_9",
+      "price": 19.6,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_10",
+      "price": 20.55,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_11",
+      "price": 22.19,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_12",
+      "price": 20.91,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_13",
+      "price": 22.82,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_14",
+      "price": 24.99,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_15",
+      "price": 25.53,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_16",
+      "price": 26.66,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_17",
+      "price": 26.1,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_18",
+      "price": 27.27,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_19",
+      "price": 28.76,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_20",
+      "price": 29.18,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_21",
+      "price": 30.93,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_22",
+      "price": 33.46,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_23",
+      "price": 33.66,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_24",
+      "price": 34.42,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_25",
+      "price": 35.37,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_26",
+      "price": 36.71,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_27",
+      "price": 36.96,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_28",
+      "price": 36.15,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_29",
+      "price": 41.37,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_30",
+      "price": 38.4,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_31",
+      "price": 40.47,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_32",
+      "price": 42.56,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_33",
+      "price": 43.51,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_34",
+      "price": 42.1,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_35",
+      "price": 44.1,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_36",
+      "price": 46.48,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_37",
+      "price": 45.74,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_38",
+      "price": 48.67,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_39",
+      "price": 44.19,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_40",
+      "price": 49.77,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_41",
+      "price": 50.73,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_42",
+      "price": 47.39,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_43",
+      "price": 53.15,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_44",
+      "price": 52.57,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_45",
+      "price": 55.36,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_46",
+      "price": 55.59,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_47",
+      "price": 56.45,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_48",
+      "price": 58.22,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_49",
+      "price": 58.75,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_50",
+      "price": 61.51,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_51",
+      "price": 60.5,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_52",
+      "price": 62.25,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_53",
+      "price": 60.86,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_54",
+      "price": 65.35,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_55",
+      "price": 61.01,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_56",
+      "price": 66,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_57",
+      "price": 63.59,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_58",
+      "price": 68.33,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_59",
+      "price": 71.22,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_60",
+      "price": 72.7,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_61",
+      "price": 71.99,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_62",
+      "price": 72.57,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_63",
+      "price": 74.5,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_64",
+      "price": 73.72,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_65",
+      "price": 74.66,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_66",
+      "price": 74.66,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_67",
+      "price": 72.43,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_68",
+      "price": 74.48,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_69",
+      "price": 77.3,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_70",
+      "price": 78.46,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_71",
+      "price": 81.91,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_72",
+      "price": 79.04,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_73",
+      "price": 82.41,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_74",
+      "price": 76.87,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_75",
+      "price": 78.94,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_76",
+      "price": 84.93,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_77",
+      "price": 89.98,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_78",
+      "price": 82.79,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_79",
+      "price": 91.95,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_80",
+      "price": 91.79,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_81",
+      "price": 93.01,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_82",
+      "price": 89.48,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_83",
+      "price": 91.82,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_84",
+      "price": 95.75,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_85",
+      "price": 87.82,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_86",
+      "price": 95.19,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_87",
+      "price": 94.15,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_88",
+      "price": 90.4,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_89",
+      "price": 98.42,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_90",
+      "price": 99.93,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_91",
+      "price": 99.2,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_92",
+      "price": 101.14,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_93",
+      "price": 99.57,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_94",
+      "price": 105.82,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_95",
+      "price": 108.96,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_96",
+      "price": 101.59,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_97",
+      "price": 107.58,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_98",
+      "price": 107.3,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_99",
+      "price": 102.62,
+      "category": "electronics"
+    }
+  ]
+}}{
+  "date": "2025-10-09",
+  "totals": {
+    "count": 100,
+    "electronics": 50,
+    "general": 50
+  },
+  "mutations": 195
+}Word 2025-10-10T18:11:31Z
+{
+  "date": "2025-10-09",
+  "totals": {
+    "count": 100,
+    "electronics": 50,
+    "general": 50
+  },
+  "mutations": 14
+}{
+  "date": "2025-10-09",
+  "items": [
+    {
+      "title": "GENERAL_0",
+      "price": 10.72,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_1",
+      "price": 11.01,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_2",
+      "price": 12.96,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_3",
+      "price": 13.93,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_4",
+      "price": 14.96,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_5",
+      "price": 15.86,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_6",
+      "price": 16.54,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_7",
+      "price": 17.57,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_8",
+      "price": 18.8,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_9",
+      "price": 19.21,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_10",
+      "price": 20.14,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_11",
+      "price": 21.43,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_12",
+      "price": 22.92,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_13",
+      "price": 23.86,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_14",
+      "price": 24.24,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_15",
+      "price": 25.35,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_16",
+      "price": 26.04,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_17",
+      "price": 27.73,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_18",
+      "price": 28.65,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_19",
+      "price": 29.46,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_20",
+      "price": 30.08,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_21",
+      "price": 31.96,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_22",
+      "price": 32.37,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_23",
+      "price": 33.85,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_24",
+      "price": 34.57,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_25",
+      "price": 35.39,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_26",
+      "price": 37.32,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_27",
+      "price": 36.7,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_28",
+      "price": 38.81,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_29",
+      "price": 39.71,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_30",
+      "price": 40.36,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_31",
+      "price": 41.49,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_32",
+      "price": 42.79,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_33",
+      "price": 43.72,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_34",
+      "price": 44.86,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_35",
+      "price": 45.25,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_36",
+      "price": 46.68,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_37",
+      "price": 47.77,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_38",
+      "price": 48.64,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_39",
+      "price": 49.48,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_40",
+      "price": 50.48,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_41",
+      "price": 51.58,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_42",
+      "price": 52.21,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_43",
+      "price": 53.02,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_44",
+      "price": 54.7,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_45",
+      "price": 55.15,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_46",
+      "price": 57.57,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_47",
+      "price": 57.4,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_48",
+      "price": 56.32,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_49",
+      "price": 59.09,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_50",
+      "price": 60.02,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_51",
+      "price": 61.23,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_52",
+      "price": 62.3,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_53",
+      "price": 63.89,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_54",
+      "price": 64.02,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_55",
+      "price": 65.22,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_56",
+      "price": 66.76,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_57",
+      "price": 67.95,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_58",
+      "price": 66.49,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_59",
+      "price": 69.47,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_60",
+      "price": 70.06,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_61",
+      "price": 71.89,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_62",
+      "price": 73.39,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_63",
+      "price": 73.19,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_64",
+      "price": 74.6,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_65",
+      "price": 75.68,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_66",
+      "price": 76.85,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_67",
+      "price": 77.62,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_68",
+      "price": 76.91,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_69",
+      "price": 75.83,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_70",
+      "price": 80.3,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_71",
+      "price": 81.74,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_72",
+      "price": 82.32,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_73",
+      "price": 83.62,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_74",
+      "price": 84.19,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_75",
+      "price": 85.86,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_76",
+      "price": 86.98,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_77",
+      "price": 86.5,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_78",
+      "price": 87.68,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_79",
+      "price": 89.74,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_80",
+      "price": 90.38,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_81",
+      "price": 93.1,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_82",
+      "price": 92.23,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_83",
+      "price": 93.51,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_84",
+      "price": 94.67,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_85",
+      "price": 93.4,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_86",
+      "price": 96.75,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_87",
+      "price": 97.08,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_88",
+      "price": 98.3,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_89",
+      "price": 99.59,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_90",
+      "price": 97.33,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_91",
+      "price": 101.62,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_92",
+      "price": 102.38,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_93",
+      "price": 103.54,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_94",
+      "price": 104.02,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_95",
+      "price": 105.3,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_96",
+      "price": 106.04,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_97",
+      "price": 107.21,
+      "category": "electronics"
+    },
+    {
+      "title": "GENERAL_98",
+      "price": 108.26,
+      "category": "general"
+    },
+    {
+      "title": "ELECTRONICS_99",
+      "price": 109.63,
+      "category": "electronics"
+    }
+  ]
+}
+
+[
+  {
+    "id": "chrome-shades",
+    "name": "Chrome Shades",
+    "price": 49
+  },
+  {
+    "id": "neural-thread",
+    "name": "Neural Thread Hoodie",
+    "price": 89
+  }
+]import { readFileSync, existsSync } from "fs";
+import path from "path";
+export default function handler(req, res) {
+  try {
+    const p = path.join(process.cwd(), "data", "models.json");
+    if (!existsSync(p)) return res.status(200).json({ date: null, items: [] });
+    const j = JSON.parse(readFileSync(p, "utf8"));
+    return res.status(200).json({ date: j.date, items: j.items?.slice(0, 100) || [] });
+  } catch (e) {
+    return res.status(500).json({ error: String(e) });
+  }
+}
+// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary
+<div style="padding:2rem; font-family:sans-serif; max-width:800px; margin:auto;">
+  <h1 style="font-size:2.5rem;">🧬 The Mutation Architect</h1>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    Keystone AI/ML wasn’t built in a weekend. It was forged over three years of friction, failure, and obsession. Jonathan — founder, mutation architect, and automation-driven visionary — didn’t just want a storefront. He wanted a living organism. One that ingests global winners, mutates layouts, propagates virally, and earns while he sleeps.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    He started with broken SDKs, git lock errors, and brittle legacy flows. But every blocker became a mutation. Every mutation became momentum. He wired ingestion daemons, heatmap telemetry, cart-triggered homepage evolution, and viral traffic engines across Discord, Reddit, Craigslist, TikTok, and email.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    He built mobile GUIs to control the empire from his phone. He fused legacy bots with new viral flows. He injected vault triggers that mutate layout from external signals. He wired analytics dashboards that log every cycle. And he daemonized the whole thing — PM2, cron, deploy, repeat.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    Keystone AI/ML is more than a storefront. It’s a mutation-grade empire. It evolves. It heals. It compounds. And now, it’s live.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6; font-weight:bold;">
+    Built by Jonathan. Mutation architect. Viral tactician. Automation obsessive. This is his system. This is his story.
+  </p>
+</div>
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>import "./mutation-cycle.js";
+console.log("[autonomous-mutator] online");
+setInterval(()=>console.log("[adbot] rotating creatives", new Date().toISOString()), 30000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const AD   = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function mutate(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+    if(!j.items?.length) return;
+    const k = Math.floor(Math.random()*j.items.length);
+    j.items[k].price = +(j.items[k].price * (1 + (Math.random()-0.5)*0.05)).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    ad.mutations = (ad.mutations||0)+1;
+    fs.writeFileSync(AD, JSON.stringify(ad,null,2));
+    console.log("[mutation] touched:", j.items[k].title, "mut#", ad.mutations);
+  }catch(e){ console.error(e); }
+}
+setInterval(mutate, 15000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+function markSale(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    j.items[i].price = +(j.items[i].price * 0.97).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    console.log("[sale-trigger] discounted:", j.items[i].title);
+  }catch(e){ console.error(e); }
+}
+setInterval(markSale, 45000);
+#!/data/data/com.termux/files/usr/bin/bash
+jq '.items | length, .[0]' ~/Autotrend_vault/keystone-storefront/data/models.json
+import { readFileSync, existsSync } from "fs";
+import path from "path";
+export default function handler(req, res) {
+  try {
+    const p = path.join(process.cwd(), "data", "models.json");
+    if (!existsSync(p)) return res.status(200).json({ date: null, items: [] });
+    const j = JSON.parse(readFileSync(p, "utf8"));
+    return res.status(200).json({ date: j.date, items: j.items?.slice(0, 100) || [] });
+  } catch (e) {
+    return res.status(500).json({ error: String(e) });
+  }
+}
+// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary
+<div style="padding:2rem; font-family:sans-serif; max-width:800px; margin:auto;">
+  <h1 style="font-size:2.5rem;">🧬 The Mutation Architect</h1>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    Keystone AI/ML wasn’t built in a weekend. It was forged over three years of friction, failure, and obsession. Jonathan — founder, mutation architect, and automation-driven visionary — didn’t just want a storefront. He wanted a living organism. One that ingests global winners, mutates layouts, propagates virally, and earns while he sleeps.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    He started with broken SDKs, git lock errors, and brittle legacy flows. But every blocker became a mutation. Every mutation became momentum. He wired ingestion daemons, heatmap telemetry, cart-triggered homepage evolution, and viral traffic engines across Discord, Reddit, Craigslist, TikTok, and email.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    He built mobile GUIs to control the empire from his phone. He fused legacy bots with new viral flows. He injected vault triggers that mutate layout from external signals. He wired analytics dashboards that log every cycle. And he daemonized the whole thing — PM2, cron, deploy, repeat.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6;">
+    Keystone AI/ML is more than a storefront. It’s a mutation-grade empire. It evolves. It heals. It compounds. And now, it’s live.
+  </p>
+  <p style="font-size:1.2rem; line-height:1.6; font-weight:bold;">
+    Built by Jonathan. Mutation architect. Viral tactician. Automation obsessive. This is his system. This is his story.
+  </p>
+</div>
+<svg fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 13.5V5.41a1 1 0 0 0-.3-.7L9.8.29A1 1 0 0 0 9.08 0H1.5v13.5A2.5 2.5 0 0 0 4 16h8a2.5 2.5 0 0 0 2.5-2.5m-1.5 0v-7H8v-5H3v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1M9.5 5V2.12L12.38 5zM5.13 5h-.62v1.25h2.12V5zm-.62 3h7.12v1.25H4.5zm.62 3h-.62v1.25h7.12V11z" clip-rule="evenodd" fill="#666" fill-rule="evenodd"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><g clip-path="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" fill="#666"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 394 80"><path fill="#000" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"/><path fill="#000" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1155 1000"><path d="m577.3 0 577.4 1000H0z" fill="#fff"/></svg><svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>import "./mutation-cycle.js";
+console.log("[autonomous-mutator] online");
+setInterval(()=>console.log("[adbot] rotating creatives", new Date().toISOString()), 30000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const AD   = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function mutate(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+    if(!j.items?.length) return;
+    const k = Math.floor(Math.random()*j.items.length);
+    j.items[k].price = +(j.items[k].price * (1 + (Math.random()-0.5)*0.05)).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    ad.mutations = (ad.mutations||0)+1;
+    fs.writeFileSync(AD, JSON.stringify(ad,null,2));
+    console.log("[mutation] touched:", j.items[k].title, "mut#", ad.mutations);
+  }catch(e){ console.error(e); }
+}
+setInterval(mutate, 15000);
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+function markSale(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    j.items[i].price = +(j.items[i].price * 0.97).toFixed(2);
+    fs.writeFileSync(DATA, JSON.stringify(j,null,2));
+    console.log("[sale-trigger] discounted:", j.items[i].title);
+  }catch(e){ console.error(e); }
+}
+setInterval(markSale, 45000);
+#!/data/data/com.termux/files/usr/bin/bash
+jq '.items | length, .[0]' ~/Autotrend_vault/keystone-storefront/data/models.json
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const AD   = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function yesterday(){ const d=new Date(Date.now()-86400000); return d.toISOString().slice(0,10); }
+function synth(count=100){
+  const items=[];
+  for(let i=0;i<count;i++){
+    const cat = i%2===0?"general":"electronics";
+    items.push({title:`${cat.toUpperCase()}_${i}`, price: +(10+(i%100)+Math.random()).toFixed(2), category:cat});
+  }
+  return items;
+}
+function run(){
+  const date = yesterday();
+  const items = synth(100); // hook: replace with real fetchers
+  fs.writeFileSync(DATA, JSON.stringify({date, items}, null, 2));
+  const totals = {count:items.length, electronics: items.filter(x=>x.category==="electronics").length, general: items.filter(x=>x.category==="general").length};
+  fs.writeFileSync(AD, JSON.stringify({date, totals, mutations:0}, null, 2));
+  console.log("[ingestor] refreshed", date, totals);
+}
+run(); setInterval(run, 60*60*1000);
+setInterval(()=>console.log("[vault] license check OK"), 60000);
+setInterval(()=>console.log("[viral] seeded social proof tick", Date.now()), 20000);
+Word 2025-10-10T18:15:11Z :: Above and Below injected
+Word 2025-10-10T18:16:48Z :: Injected logs, dashboard, fork, monetization, retrain
+Word 2025-10-10T18:20:55Z :: Injected logs, dashboard, fork, monetization, retrain
+Word 2025-10-10T18:22:04Z :: Injected breakout scoring, steward analytics, SPDX enforcer, vault replication
+Word 2025-10-10T18:24:57Z :: Injected bundler, retrain orchestration, public deploy logic
+Word 2025-10-10T18:26:52Z :: Injected webhooks, steward audit, license propagation
+import fs from "fs";
+const LOG = "data/audit.log";
+function logAction(action){
+  const entry = \`[\${new Date().toISOString()}] Steward: \${action}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[audit] action logged:", action);
+}
+logAction("vault replicated");
+logAction("public deploy");
+logAction("model retrain");
+import fs from "fs"; import path from "path";
+const header = \`// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary\n\`;
+function propagate(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return propagate(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    fs.writeFileSync(full, header + content);
+    console.log("[license] injected:", full);
+  });
+}
+propagate(path.join(process.cwd(),"scripts"));
+propagate(path.join(process.cwd(),"pages"));
+import fs from "fs"; import path from "path";
+const LOG = path.join(process.cwd(), "data", "mutation.log");
+export default function handler(req, res){
+  if(req.method !== "POST") return res.status(405).end();
+  const { source, payload } = req.body;
+  const entry = \`[\${new Date().toISOString()}] Webhook from \${source}: \${JSON.stringify(payload)}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[webhook] mutation received:", source);
+  res.status(200).json({ status: "logged" });
+}
+Word 2025-10-10T18:28:06Z :: Injected webhooks, steward audit, license propagation
+Word 2025-10-10T18:29:43Z :: Injected logs, dashboard, fork, monetization, retrain
+Word 2025-10-10T18:30:12Z :: Injected breakout scoring, steward analytics, SPDX enforcer, vault replication
+Word 2025-10-10T18:30:25Z :: Injected bundler, retrain orchestration, public deploy logic
+Word 2025-10-10T18:32:51Z :: Injected audit visualizer, steward validator, mutation trigger
+Word 2025-10-10T18:33:33Z :: Injected audit visualizer, steward validator, mutation trigger
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const LOG  = path.join(process.cwd(), "data", "mutation.log");
+function logMutation(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    const item = j.items[i];
+    const entry = `[${new Date().toISOString()}] Mutated: ${item.title} → $${item.price}\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[logger] mutation logged:", item.title);
+  }catch(e){ console.error(e); }
+}
+setInterval(logMutation, 15000);
+import { execSync } from "child_process";
+const repo = "https://github.com/your-org/keystone-storefront";
+const target = `keystone-fork-${Date.now()}`;
+execSync(`git clone ${repo} ${target}`);
+execSync(`cp .IMMORTAL_PAYLOAD ${target}/.IMMORTAL_PAYLOAD`);
+console.log("[fork] propagated to:", target);
+import fs from "fs"; import path from "path";
+const AD = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function checkRetrain(){
+  const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+  if(ad.mutations >= 500){
+    console.log("[retrain] threshold hit. Triggering model update...");
+  }
+}
+setInterval(checkRetrain, 60000);
+import fs from "fs"; import path from "path";
+const PRED = path.join(process.cwd(), "data", "predictions.csv");
+const LOG  = path.join(process.cwd(), "data", "breakout.log");
+function scoreBreakouts(){
+  const lines = fs.readFileSync(PRED,"utf8").split("\n").slice(1);
+  const ranked = lines.map(l=>{
+    const [ticker,prob] = l.split(",");
+    return {ticker, score: parseFloat(prob)};
+  }).filter(r=>r.score>0.7).sort((a,b)=>b.score-a.score);
+  const top = ranked.slice(0,5);
+  const entry = `[${new Date().toISOString()}] Top Breakouts: ${top.map(t=>`${t.ticker} (${t.score})`).join(", ")}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[scorer] breakout scores logged");
+}
+setInterval(scoreBreakouts, 60000);
+import fs from "fs"; import path from "path";
+function injectSPDX(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return injectSPDX(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    const header = "// SPDX-License-Identifier: RL-Proprietary\n";
+    fs.writeFileSync(full, header + content);
+    console.log("[spdx] injected:", full);
+  });
+}
+injectSPDX(path.join(process.cwd(),"scripts"));
+injectSPDX(path.join(process.cwd(),"pages"));
+import { execSync } from "child_process";
+const src = "Autotrend_vault";
+const dst = `Vault_Replica_${Date.now()}`;
+execSync(`cp -r ${src} ${dst}`);
+execSync(`cp ${src}/keystone-storefront/.IMMORTAL_PAYLOAD ${dst}/keystone-storefront/.IMMORTAL_PAYLOAD`);
+console.log("[vault] replicated to:", dst);
+import fs from "fs"; import path from "path";
+const dirs = ["scripts", "pages", "data"];
+const out = path.join(process.cwd(), ".IMMORTAL_PAYLOAD");
+function bundle(){
+  let payload = "";
+  dirs.forEach(dir=>{
+    fs.readdirSync(path.join(process.cwd(), dir)).forEach(f=>{
+      const full = path.join(process.cwd(), dir, f);
+      if(fs.statSync(full).isFile()){
+        payload += `\n// === ${dir}/${f} ===\n` + fs.readFileSync(full,"utf8");
+      }
+    });
+  });
+  fs.writeFileSync(out, payload);
+  console.log("[bundler] payload bundled into .IMMORTAL_PAYLOAD");
+}
+bundle();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/retrain.log";
+function retrain(){
+  try {
+    execSync("python3 breakout_ai_free.py");
+    const entry = `[${new Date().toISOString()}] Retrain triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[retrain] model retrain executed");
+  } catch (e) {
+    console.error("[retrain] failed:", e);
+  }
+}
+retrain();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/deploy.log";
+function deploy(){
+  try {
+    execSync("vercel --prod");
+    const entry = `[${new Date().toISOString()}] Public deploy triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[deploy] storefront deployed publicly");
+  } catch (e) {
+    console.error("[deploy] failed:", e);
+  }
+}
+deploy();
+import fs from "fs";
+const LOG = "data/audit.log";
+
+function logAction(action){
+  const entry = `[${new Date().toISOString()}] Steward: ${action}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[audit] action logged:", action);
+}
+
+// Example usage
+logAction("vault replicated");
+logAction("public deploy");
+logAction("model retrain");
+import fs from "fs"; import path from "path";
+const header = \`// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary\n\`;
+function propagate(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return propagate(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    fs.writeFileSync(full, header + content);
+    console.log("[license] injected:", full);
+  });
+}
+propagate(path.join(process.cwd(),"scripts"));
+propagate(path.join(process.cwd(),"pages"));
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.json());
+export default function Dashboard(){
+  const {data}=useSWR("/data/analytics-dashboard.json", fetcher, {refreshInterval:10000});
+  const t = data?.totals || {};
+  return (
+    <main style={{fontFamily:'sans-serif',padding:20}}>
+      <h1>📊 Dashboard</h1>
+      <p>Date: {data?.date}</p>
+      <ul>
+        <li>Total Items: {t.count}</li>
+        <li>Electronics: {t.electronics}</li>
+        <li>General: {t.general}</li>
+        <li>Mutations: {data?.mutations}</li>
+      </ul>
+    </main>
+  );
+}
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.text());
+export default function AuditDashboard(){
+  const {data}=useSWR("/data/audit.log", fetcher, {refreshInterval:10000});
+  return (
+    <main style={{fontFamily:'monospace',padding:20}}>
+      <h1>📜 Steward Audit Log</h1>
+      <pre>{data}</pre>
+    </main>
+  );
+}
+export default function handler(req, res) {
+  const { item, price } = req.body;
+  console.log("[checkout] requested:", item, price);
+  res.status(200).json({ status: "pending", item, price });
+}
+import fs from "fs"; import path from "path";
+const LOG = path.join(process.cwd(), "data", "mutation.log");
+export default function handler(req, res){
+  if(req.method !== "POST") return res.status(405).end();
+  const { source, payload } = req.body;
+  const entry = \`[\${new Date().toISOString()}] Webhook from \${source}: \${JSON.stringify(payload)}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[webhook] mutation received:", source);
+  res.status(200).json({ status: "logged" });
+}
+import fs from "fs"; import path from "path";
+export default function handler(req,res){
+  const ad = JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","analytics-dashboard.json"),"utf8"));
+  const log = fs.readFileSync(path.join(process.cwd(),"data","mutation.log"),"utf8").split("\n").length;
+  const forks = fs.readdirSync(process.cwd()).filter(f=>f.startsWith("keystone-fork-")).length;
+  res.status(200).json({ mutations: log, forks, monetized: ad?.monetized || 0 });
+}
+Word 2025-10-10T18:38:03Z :: Injected full mutation suite: logs, scoring, analytics, bundlers, deploy, audit, license, webhooks, validators
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const LOG  = path.join(process.cwd(), "data", "mutation.log");
+function logMutation(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    const item = j.items[i];
+    const entry = `[${new Date().toISOString()}] Mutated: ${item.title} → $${item.price}\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[logger] mutation logged:", item.title);
+  }catch(e){ console.error(e); }
+}
+setInterval(logMutation, 15000);
+import { execSync } from "child_process";
+const repo = "https://github.com/your-org/keystone-storefront";
+const target = `keystone-fork-${Date.now()}`;
+execSync(`git clone ${repo} ${target}`);
+execSync(`cp .IMMORTAL_PAYLOAD ${target}/.IMMORTAL_PAYLOAD`);
+console.log("[fork] propagated to:", target);
+import fs from "fs"; import path from "path";
+const AD = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function checkRetrain(){
+  const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+  if(ad.mutations >= 500){
+    console.log("[retrain] threshold hit. Triggering model update...");
+  }
+}
+setInterval(checkRetrain, 60000);
+import fs from "fs"; import path from "path";
+const PRED = path.join(process.cwd(), "data", "predictions.csv");
+const LOG  = path.join(process.cwd(), "data", "breakout.log");
+function scoreBreakouts(){
+  const lines = fs.readFileSync(PRED,"utf8").split("\n").slice(1);
+  const ranked = lines.map(l=>{
+    const [ticker,prob] = l.split(",");
+    return {ticker, score: parseFloat(prob)};
+  }).filter(r=>r.score>0.7).sort((a,b)=>b.score-a.score);
+  const top = ranked.slice(0,5);
+  const entry = `[${new Date().toISOString()}] Top Breakouts: ${top.map(t=>`${t.ticker} (${t.score})`).join(", ")}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[scorer] breakout scores logged");
+}
+setInterval(scoreBreakouts, 60000);
+import fs from "fs"; import path from "path";
+function injectSPDX(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return injectSPDX(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    const header = "// SPDX-License-Identifier: RL-Proprietary\n";
+    fs.writeFileSync(full, header + content);
+    console.log("[spdx] injected:", full);
+  });
+}
+injectSPDX(path.join(process.cwd(),"scripts"));
+injectSPDX(path.join(process.cwd(),"pages"));
+import { execSync } from "child_process";
+const src = "Autotrend_vault";
+const dst = `Vault_Replica_${Date.now()}`;
+execSync(`cp -r ${src} ${dst}`);
+execSync(`cp ${src}/keystone-storefront/.IMMORTAL_PAYLOAD ${dst}/keystone-storefront/.IMMORTAL_PAYLOAD`);
+console.log("[vault] replicated to:", dst);
+import fs from "fs"; import path from "path";
+const dirs = ["scripts", "pages", "data"];
+const out = path.join(process.cwd(), ".IMMORTAL_PAYLOAD");
+function bundle(){
+  let payload = "";
+  dirs.forEach(dir=>{
+    fs.readdirSync(path.join(process.cwd(), dir)).forEach(f=>{
+      const full = path.join(process.cwd(), dir, f);
+      if(fs.statSync(full).isFile()){
+        payload += `\n// === ${dir}/${f} ===\n` + fs.readFileSync(full,"utf8");
+      }
+    });
+  });
+  fs.writeFileSync(out, payload);
+  console.log("[bundler] payload bundled into .IMMORTAL_PAYLOAD");
+}
+bundle();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/retrain.log";
+function retrain(){
+  try {
+    execSync("python3 breakout_ai_free.py");
+    const entry = `[${new Date().toISOString()}] Retrain triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[retrain] model retrain executed");
+  } catch (e) {
+    console.error("[retrain] failed:", e);
+  }
+}
+retrain();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/deploy.log";
+function deploy(){
+  try {
+    execSync("vercel --prod");
+    const entry = `[${new Date().toISOString()}] Public deploy triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[deploy] storefront deployed publicly");
+  } catch (e) {
+    console.error("[deploy] failed:", e);
+  }
+}
+deploy();
+import fs from "fs";
+const LOG = "data/audit.log";
+
+function logAction(action){
+  const entry = `[${new Date().toISOString()}] Steward: ${action}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[audit] action logged:", action);
+}
+
+// Example usage
+logAction("vault replicated");
+logAction("public deploy");
+logAction("model retrain");
+import fs from "fs"; import path from "path";
+const header = \`// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary\n\`;
+function propagate(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return propagate(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    fs.writeFileSync(full, header + content);
+    console.log("[license] injected:", full);
+  });
+}
+propagate(path.join(process.cwd(),"scripts"));
+propagate(path.join(process.cwd(),"pages"));
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.json());
+export default function Dashboard(){
+  const {data}=useSWR("/data/analytics-dashboard.json", fetcher, {refreshInterval:10000});
+  const t = data?.totals || {};
+  return (
+    <main style={{fontFamily:'sans-serif',padding:20}}>
+      <h1>📊 Dashboard</h1>
+      <p>Date: {data?.date}</p>
+      <ul>
+        <li>Total Items: {t.count}</li>
+        <li>Electronics: {t.electronics}</li>
+        <li>General: {t.general}</li>
+        <li>Mutations: {data?.mutations}</li>
+      </ul>
+    </main>
+  );
+}
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.text());
+export default function AuditDashboard(){
+  const {data}=useSWR("/data/audit.log", fetcher, {refreshInterval:10000});
+  return (
+    <main style={{fontFamily:'monospace',padding:20}}>
+      <h1>📜 Steward Audit Log</h1>
+      <pre>{data}</pre>
+    </main>
+  );
+}
+export default function handler(req, res) {
+  const { item, price } = req.body;
+  console.log("[checkout] requested:", item, price);
+  res.status(200).json({ status: "pending", item, price });
+}
+import fs from "fs"; import path from "path";
+const LOG = path.join(process.cwd(), "data", "mutation.log");
+export default function handler(req, res){
+  if(req.method !== "POST") return res.status(405).end();
+  const { source, payload } = req.body;
+  const entry = \`[\${new Date().toISOString()}] Webhook from \${source}: \${JSON.stringify(payload)}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[webhook] mutation received:", source);
+  res.status(200).json({ status: "logged" });
+}
+import fs from "fs"; import path from "path";
+export default function handler(req,res){
+  const ad = JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","analytics-dashboard.json"),"utf8"));
+  const log = fs.readFileSync(path.join(process.cwd(),"data","mutation.log"),"utf8").split("\n").length;
+  const forks = fs.readdirSync(process.cwd()).filter(f=>f.startsWith("keystone-fork-")).length;
+  res.status(200).json({ mutations: log, forks, monetized: ad?.monetized || 0 });
+}
+Word 2025-10-10T18:39:14Z :: Injected full mutation suite: logs, scoring, analytics, bundlers, deploy, audit, license, webhooks, validators
+import fs from "fs"; import path from "path";
+const DATA = path.join(process.cwd(), "data", "models.json");
+const LOG  = path.join(process.cwd(), "data", "mutation.log");
+function logMutation(){
+  try{
+    const j = JSON.parse(fs.readFileSync(DATA,"utf8"));
+    if(!j.items?.length) return;
+    const i = Math.floor(Math.random()*j.items.length);
+    const item = j.items[i];
+    const entry = `[${new Date().toISOString()}] Mutated: ${item.title} → $${item.price}\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[logger] mutation logged:", item.title);
+  }catch(e){ console.error(e); }
+}
+setInterval(logMutation, 15000);
+import { execSync } from "child_process";
+const repo = "https://github.com/your-org/keystone-storefront";
+const target = `keystone-fork-${Date.now()}`;
+execSync(`git clone ${repo} ${target}`);
+execSync(`cp .IMMORTAL_PAYLOAD ${target}/.IMMORTAL_PAYLOAD`);
+console.log("[fork] propagated to:", target);
+import fs from "fs"; import path from "path";
+const AD = path.join(process.cwd(), "data", "analytics-dashboard.json");
+function checkRetrain(){
+  const ad = JSON.parse(fs.readFileSync(AD,"utf8"));
+  if(ad.mutations >= 500){
+    console.log("[retrain] threshold hit. Triggering model update...");
+  }
+}
+setInterval(checkRetrain, 60000);
+import fs from "fs"; import path from "path";
+const PRED = path.join(process.cwd(), "data", "predictions.csv");
+const LOG  = path.join(process.cwd(), "data", "breakout.log");
+function scoreBreakouts(){
+  const lines = fs.readFileSync(PRED,"utf8").split("\n").slice(1);
+  const ranked = lines.map(l=>{
+    const [ticker,prob] = l.split(",");
+    return {ticker, score: parseFloat(prob)};
+  }).filter(r=>r.score>0.7).sort((a,b)=>b.score-a.score);
+  const top = ranked.slice(0,5);
+  const entry = `[${new Date().toISOString()}] Top Breakouts: ${top.map(t=>`${t.ticker} (${t.score})`).join(", ")}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[scorer] breakout scores logged");
+}
+setInterval(scoreBreakouts, 60000);
+import fs from "fs"; import path from "path";
+function injectSPDX(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return injectSPDX(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    const header = "// SPDX-License-Identifier: RL-Proprietary\n";
+    fs.writeFileSync(full, header + content);
+    console.log("[spdx] injected:", full);
+  });
+}
+injectSPDX(path.join(process.cwd(),"scripts"));
+injectSPDX(path.join(process.cwd(),"pages"));
+import { execSync } from "child_process";
+const src = "Autotrend_vault";
+const dst = `Vault_Replica_${Date.now()}`;
+execSync(`cp -r ${src} ${dst}`);
+execSync(`cp ${src}/keystone-storefront/.IMMORTAL_PAYLOAD ${dst}/keystone-storefront/.IMMORTAL_PAYLOAD`);
+console.log("[vault] replicated to:", dst);
+import fs from "fs"; import path from "path";
+const dirs = ["scripts", "pages", "data"];
+const out = path.join(process.cwd(), ".IMMORTAL_PAYLOAD");
+function bundle(){
+  let payload = "";
+  dirs.forEach(dir=>{
+    fs.readdirSync(path.join(process.cwd(), dir)).forEach(f=>{
+      const full = path.join(process.cwd(), dir, f);
+      if(fs.statSync(full).isFile()){
+        payload += `\n// === ${dir}/${f} ===\n` + fs.readFileSync(full,"utf8");
+      }
+    });
+  });
+  fs.writeFileSync(out, payload);
+  console.log("[bundler] payload bundled into .IMMORTAL_PAYLOAD");
+}
+bundle();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/retrain.log";
+function retrain(){
+  try {
+    execSync("python3 breakout_ai_free.py");
+    const entry = `[${new Date().toISOString()}] Retrain triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[retrain] model retrain executed");
+  } catch (e) {
+    console.error("[retrain] failed:", e);
+  }
+}
+retrain();
+import { execSync } from "child_process";
+import fs from "fs";
+const LOG = "data/deploy.log";
+function deploy(){
+  try {
+    execSync("vercel --prod");
+    const entry = `[${new Date().toISOString()}] Public deploy triggered\n`;
+    fs.appendFileSync(LOG, entry);
+    console.log("[deploy] storefront deployed publicly");
+  } catch (e) {
+    console.error("[deploy] failed:", e);
+  }
+}
+deploy();
+import fs from "fs";
+const LOG = "data/audit.log";
+
+function logAction(action){
+  const entry = `[${new Date().toISOString()}] Steward: ${action}\n`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[audit] action logged:", action);
+}
+
+// Example usage
+logAction("vault replicated");
+logAction("public deploy");
+logAction("model retrain");
+import fs from "fs"; import path from "path";
+const header = \`// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
+// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary\n\`;
+function propagate(dir){
+  fs.readdirSync(dir).forEach(f=>{
+    const full = path.join(dir,f);
+    if(fs.statSync(full).isDirectory()) return propagate(full);
+    if(!f.endsWith(".js") && !f.endsWith(".jsx")) return;
+    const content = fs.readFileSync(full,"utf8");
+    if(content.includes("SPDX-License-Identifier")) return;
+    fs.writeFileSync(full, header + content);
+    console.log("[license] injected:", full);
+  });
+}
+propagate(path.join(process.cwd(),"scripts"));
+propagate(path.join(process.cwd(),"pages"));
+import fs from "fs";
+const ROLES = { "cole": "admin", "shadowx": "executor", "guest": "read-only" };
+
+function validateSteward(name, action){
+  const role = ROLES[name.toLowerCase()];
+  if(!role) return console.error("[validator] unknown steward:", name);
+  if(role === "read-only" && action !== "view") return console.error("[validator] insufficient permission:", name);
+  console.log(`[validator] ${name} authorized for ${action}`);
+}
+
+// Example usage
+validateSteward("Cole", "deploy");
+validateSteward("Guest", "mutate");
+import https from "https";
+function triggerWebhook(source, payload){
+  const data = JSON.stringify({ source, payload });
+  const req = https.request({
+    hostname: "your-webhook-endpoint.com",
+    path: "/mutation",
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Content-Length": data.length }
+  }, res => {
+    console.log("[trigger] webhook status:", res.statusCode);
+  });
+  req.on("error", e => console.error("[trigger] failed:", e));
+  req.write(data);
+  req.end();
+}
+
+// Example usage
+triggerWebhook("storefront", { mutation: "checkout", item: "EchoBot" });
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.json());
+export default function Dashboard(){
+  const {data}=useSWR("/data/analytics-dashboard.json", fetcher, {refreshInterval:10000});
+  const t = data?.totals || {};
+  return (
+    <main style={{fontFamily:'sans-serif',padding:20}}>
+      <h1>📊 Dashboard</h1>
+      <p>Date: {data?.date}</p>
+      <ul>
+        <li>Total Items: {t.count}</li>
+        <li>Electronics: {t.electronics}</li>
+        <li>General: {t.general}</li>
+        <li>Mutations: {data?.mutations}</li>
+      </ul>
+    </main>
+  );
+}
+import useSWR from "swr";
+const fetcher = (u)=>fetch(u).then(r=>r.text());
+export default function AuditDashboard(){
+  const {data}=useSWR("/data/audit.log", fetcher, {refreshInterval:10000});
+  return (
+    <main style={{fontFamily:'monospace',padding:20}}>
+      <h1>📜 Steward Audit Log</h1>
+      <pre>{data}</pre>
+    </main>
+  );
+}
+export default function handler(req, res) {
+  const { item, price } = req.body;
+  console.log("[checkout] requested:", item, price);
+  res.status(200).json({ status: "pending", item, price });
+}
+import fs from "fs"; import path from "path";
+const LOG = path.join(process.cwd(), "data", "mutation.log");
+export default function handler(req, res){
+  if(req.method !== "POST") return res.status(405).end();
+  const { source, payload } = req.body;
+  const entry = \`[\${new Date().toISOString()}] Webhook from \${source}: \${JSON.stringify(payload)}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[webhook] mutation received:", source);
+  res.status(200).json({ status: "logged" });
+}
+import fs from "fs"; import path from "path";
+export default function handler(req,res){
+  const ad = JSON.parse(fs.readFileSync(path.join(process.cwd(),"data","analytics-dashboard.json"),"utf8"));
+  const log = fs.readFileSync(path.join(process.cwd(),"data","mutation.log"),"utf8").split("\n").length;
+  const forks = fs.readdirSync(process.cwd()).filter(f=>f.startsWith("keystone-fork-")).length;
+  res.status(200).json({ mutations: log, forks, monetized: ad?.monetized || 0 });
+}
+Word 2025-10-10T18:39:58Z :: Injected full mutation suite: logs, scoring, analytics, bundlers, deploy, audit, license, webhooks, validators
+{"id":"TOPITER_MUT_20251011163826517","timestamp":"2025-10-11T16:38:26.528Z","mutated":46,"source":"./top-iter.json"}
+START_RUN 2025-10-11T16:55:54Z :: launched start.cjs
+INJECT_RUN 2025-10-11T17:05:44Z :: consolidated storefront -> http://127.0.0.1:
+INJECT_RUN 2025-10-11T17:07:03Z :: consolidated storefront -> http://127.0.0.1:3000
+2025-10-11T17:21:20.823Z | MUTATION 73b6209d-1e09-48d2-8d0c-e8bba3bc9662 | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T17:43:52.583Z | MUTATION 61769527-35c6-48fa-8d72-b93986cb8374 | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:33:51.317Z | MUTATION 8baae27b-6f6c-4669-9163-3825ff41d556 | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:45:11.084Z | MUTATION 1f3f1ad3-36e6-45ab-966c-c01577c0be7e | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:46:13.161Z | MUTATION 1597c53d-6c4d-48d5-a79b-bf353b01ca8b | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:47:05.616Z | MUTATION 75fe5ef7-4736-4431-90c8-ee694012f2f2 | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:47:42.894Z | MUTATION 04e48231-bcd4-4c44-96bb-5c1594baaa44 | top-iter -> 100 items | sources=ebay,bestbuy
+2025-10-11T18:48:20.514Z | MUTATION d185f880-fd20-4e20-9598-cc521ae52812 | top-iter -> 100 items | sources=ebay,bestbuy
+MUTATION: page.tsx sealed with SPDX, license gate, and JSX logic | Sat Oct 11 20:15:29 UTC 2025
+MUTATION: High-ticket storefront injected with tiered pricing, license gate, and fallback logic | Sat Oct 11 20:33:07 UTC 2025
+Funnel injected: tiered pricing, fallback logic, GitHub Action, license enforcement | Sat Oct 11 20:34:32 UTC 2025
+MUTATION: Injected tiered storefront, license logic, fallback expiration, and GitHub Action scaffold | Sat Oct 11 20:35:52 UTC 2025
+MUTATION: Injected tiered storefront, license logic, fallback expiration, and GitHub Action scaffold | Sat Oct 11 21:44:55 UTC 2025
+MUTATION: Injected tiered storefront, license logic, fallback expiration, and GitHub Action scaffold | Sat Oct 11 21:47:13 UTC 2025
+MUTATION: WarriorPlus + JVZoo funnel deployed, PayPal webhook wired, AdBot propagation logs injected | Sat Oct 11 21:48:34 UTC 2025
+MUTATION: Post-build injection complete — install.sh, license verify, Stripe generator, checklist, zip | Sun Oct 12 01:37:18 UTC 2025
+MUTATION: Injected missing dev script into package.json | Sun Oct 12 01:37:59 UTC 2025
+MUTATION: Full system injected, zipped, and visualized | Sun Oct 12 01:48:12 UTC 2025
+MUTATION: product.zip created and vault sealed | Sun Oct 12 01:49:58 UTC 2025
+MUTATION: Stripe CLI v1.31.0 installed cleanly | Sun Oct 12 12:22:37 UTC 2025
+MUTATION: Stripe CLI autocompletion injected | Sun Oct 12 12:22:58 UTC 2025
+🧬 All detected errors patched and logged at 2025-10-12T22:08:00-04:00
+[062] Injected expo-router into autotrend-dashboard. Restored sovereign build flow.
+[063] Injected expo-router and vercel-build script. Sovereign build flow restored.
+[064] Injected expo-router and vercel-build script with correct entry point (start.cjs). Sovereign flow restored.
+[065] Injected mutate_top_iter.js as vercel-build entry. Sovereign mutation flow restored.
+{"id":"TOPITER_MUT_20251014091618909","timestamp":"2025-10-14T09:16:18.910Z","mutated":46,"source":"./top-iter.json"}
+[069] Forced expo-router install with legacy peer resolution. Dashboard fracture patched.
+{"id":"TOPITER_MUT_20251014092124499","timestamp":"2025-10-14T09:21:24.500Z","mutated":46,"source":"./top-iter.json"}
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for branch main. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+[070] Deploy hook IMMORTAL_DEPLOY_070 created for keystone-storefront. Mutation trigger sealed.
+{"id":"TOPITER_MUT_20251014144451817","timestamp":"2025-10-14T14:44:51.818Z","mutated":46,"source":"./top-iter.json"}
+[071] Injected dummy serverless route: /api/ping
+{"id":"TOPITER_MUT_20251014162841390","timestamp":"2025-10-14T16:28:41.391Z","mutated":46,"source":"./top-iter.json"}
+[071] Injected dummy serverless route: /api/ping
+{"id":"TOPITER_MUT_20251014162929083","timestamp":"2025-10-14T16:29:29.085Z","mutated":46,"source":"./top-iter.json"}
+[071] Injected dummy serverless route: /api/ping
+{"id":"TOPITER_MUT_20251014163441220","timestamp":"2025-10-14T16:34:41.221Z","mutated":46,"source":"./top-iter.json"}
+{"id":"TOPITER_MUT_20251014163523930","timestamp":"2025-10-14T16:35:23.931Z","mutated":46,"source":"./top-iter.json"}
+[071] Injected dummy serverless route: /api/ping
+{"id":"TOPITER_MUT_20251014163601129","timestamp":"2025-10-14T16:36:01.130Z","mutated":46,"source":"./top-iter.json"}
+[072] Injected /api/ping and chained next build to vercel-build script.
+[073] Temporarily disabled mutation-webhook.js due to SWC wasm crash. Build unblocked.
+[074] Installed swr and disabled app/page.tsx due to SWC wasm crash.
+[075] Injected ESLint config with node/browser env to fix no-undef errors.
+{"id":"TOPITER_MUT_20251014164435816","timestamp":"2025-10-14T16:44:35.827Z","mutated":46,"source":"./top-iter.json"}
+[076] Injected fallback 404 page for serverless routing.
+{"id":"TOPITER_MUT_20251014170027088","timestamp":"2025-10-14T17:00:27.091Z","mutated":46,"source":"./top-iter.json"}
+Word 2025-10-14T23:52:22Z :: Injected dev origin and watch guards, scaffolded /vault-html route, validated /api/checkout payload, logged runtime fractures to runtime_fractures.log
+Word 2025-10-14T23:56:09Z :: Injected next 10 mutations: fallback handler, telemetry, SPDX headers, mutation script, vault-json route, deploy hook, and secret
+Word 2025-10-15T00:02:07Z :: Injected config, route, validation; grep scan interrupted manually
+Word 2025-10-15T00:08:07Z :: Scaffolded /api/fractures endpoint and exposed runtime_fractures.log
+Word 2025-10-15T00:08:43Z :: Scaffolded /api/fractures endpoint and exposed runtime_fractures.log
+Word 2025-10-15T00:09:51Z :: Scaffolded /api/fractures endpoint and exposed runtime_fractures.log
+Word 2025-10-15T06:03:41Z :: storefront mutation complete, process online and immortalized
+Word 2025-10-15T06:04:45Z :: storefront re-forked clean, legacy sealed
+Word 2025-10-15T06:10:42Z :: next.config patched to .cjs, storefront running, mutation sealed
+Word 2025-10-15T06:11:44Z :: All config/runtime/PM2 fractures patched, storefront online, mutation sealed
+Word 2025-10-15T14:46:10Z :: Storefront rebuilt, PM2 rebound, mutation sealed

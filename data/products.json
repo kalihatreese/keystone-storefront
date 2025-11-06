@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Cybercop AI",
+    "price": 49.99,
+    "image": "https://picsum.photos/seed/cybercop/640/640",
+    "description": "Next-gen AI copilot for workflows."
+  },
+  {
+    "name": "Overlord Model",
+    "price": 79.99,
+    "image": "https://picsum.photos/seed/overlord/640/640",
+    "description": "Keystone core model—premium tier."
+  },
+  {
+    "name": "RapidAlphaX Signals",
+    "price": 29.0,
+    "image": "https://picsum.photos/seed/rapid/640/640",
+    "description": "Daily trading signals with ATR/EMA logic."
+  }
+]

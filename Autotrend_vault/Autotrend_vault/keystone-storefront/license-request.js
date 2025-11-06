@@ -1,0 +1,2 @@
+// SPDX-License-Identifier: Proprietary
+export function validateLicense() { const licenseKey = require("../../../license-key.json")?.key; return licenseKey && licenseKey.startsWith("REESE-") && licenseKey.length > 12; }\n\nexport function getLicenseTier() { const issuedAt = require("../../../license-key.json")?.issued_at; const now = Date.now(); const days = (now - new Date(issuedAt).getTime()) / (1000 * 60 * 60 * 24); if (days <= 60) return "debut"; if (days <= 90) return "ascension"; return "legacy"; }

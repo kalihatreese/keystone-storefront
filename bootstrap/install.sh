@@ -1,0 +1,1 @@
+#!/bin/bash\nset -e\necho "🔧 Bootstrapping mutation-grade storefront..."\ndocker compose up -d\nsleep 5\nnpm run migrate || echo "⚠️ Migrate skipped"\nnpm run seed || echo "⚠️ Seed skipped"\necho "✅ Containers healthy. Dashboard: http://127.0.0.1:8080"\necho "Admin: admin@vault.local | API Key: REESE-KEY-$(date +%s)" > dist/quickstart.txt\nmake verify

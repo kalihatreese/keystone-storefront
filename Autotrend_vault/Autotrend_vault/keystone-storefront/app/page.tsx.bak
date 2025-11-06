@@ -1,0 +1,14 @@
+<<<<<<< Updated upstream
+import products from '../data/products.json'; export default function Page(){return <main><h1>Keystone Storefront</h1><ul>{products.map(p=><li key={p.id}>{p.name}</li>)}</ul></main>}
+=======
+import Link from 'next/link';
+export default function Page(){
+  return (
+    <main style={{maxWidth:960,margin:'0 auto'}}>
+      <h1 style={{fontSize:'2rem',fontWeight:700}}>Keystone Storefront</h1>
+      <p>Autotrend Vault is live.</p>
+      <p><Link href="/results">View latest results</Link> · <Link href="/checkout">Checkout</Link> · <Link href="/top-items">Top Items (JSON)</Link></p>
+    </main>
+  );
+}
+>>>>>>> Stashed changes

@@ -1,0 +1,6 @@
+.next/
+.expo/
+.venv/
+node_modules/
+dist/
+build/

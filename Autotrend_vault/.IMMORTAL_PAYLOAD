@@ -1,0 +1,2 @@
+🔐 Mutation #391: Auto-patched vulnerable dependencies in Autotrend_vault
+🛠️ Mutation #392: Patched node-gyp fracture by injecting android_ndk_path and bypassing native build

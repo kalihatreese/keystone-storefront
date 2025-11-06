@@ -1,0 +1,22 @@
+name: Nightly Static Refresh
+on:
+  schedule:
+    - cron: '5 7 * * *'   # 07:05 UTC ≈ 03:05 ET
+  workflow_dispatch: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm ci || npm i
+      - run: npm run prebuild || true
+      - run: npm run build
+      - run: mkdir -p docs && cp -r out/* docs/ && touch docs/.nojekyll
+      - run: |
+          git config user.name "Keystone Bot"
+          git config user.email "noreply@keystoneaiml.com"
+          git add docs || true
+          git commit -m "Nightly refresh" || echo "no changes"
+          git push || true

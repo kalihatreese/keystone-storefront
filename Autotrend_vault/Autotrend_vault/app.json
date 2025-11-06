@@ -1,0 +1,20 @@
+
+
+
+
+
+
+{
+  "expo": {
+    "name": "Keystone AutoTrend",
+    "slug": "keystoneautotrend",
+    "android": {
+      "package": "com.reeselimitedllc.keystoneautotrend"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2a3920fc-955d-4f47-9a06-b06ba96b9105"
+      }
+    }
+  }
+}

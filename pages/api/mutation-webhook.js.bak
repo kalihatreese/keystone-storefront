@@ -1,0 +1,10 @@
+import fs from "fs"; import path from "path";
+const LOG = path.join(process.cwd(), "data", "mutation.log");
+export default function handler(req, res){
+  if(req.method !== "POST") return res.status(405).end();
+  const { source, payload } = req.body;
+  const entry = \`[\${new Date().toISOString()}] Webhook from \${source}: \${JSON.stringify(payload)}\n\`;
+  fs.appendFileSync(LOG, entry);
+  console.log("[webhook] mutation received:", source);
+  res.status(200).json({ status: "logged" });
+}

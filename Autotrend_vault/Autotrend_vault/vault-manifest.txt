@@ -1,0 +1,9 @@
+autotrend-bot.txt
+autotrend-bot.zip
+license-key.json
+license-request.js
+steward-access-panel.html
+overlord-sniper.zip
+termux_backup_20250928.zip
+storage/
+temp/

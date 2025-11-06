@@ -1,0 +1,1 @@
+const fs=require('fs');const update=()=>{let index=JSON.parse(fs.readFileSync('echo-index.json','utf8'));index.lastIndexed=new Date().toISOString();fs.writeFileSync('echo-index.json',JSON.stringify(index,null,2));};setInterval(update,3600000);

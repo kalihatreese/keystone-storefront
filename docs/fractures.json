@@ -1,0 +1,12 @@
+{
+  "status": "ok",
+  "fractures": [
+    "pages/api/checkout.js:6:    console.warn(\"[checkout] Missing params:\", itemId, quantity);",
+    "pages/api/checkout.js:7:    return res.status(400).json({ error: \"Missing itemId or quantity\" });",
+    "pages/api/checkout.js:12:    console.warn(\"[checkout] Missing params:\", itemId, quantity);",
+    "pages/api/checkout.js:13:    return res.status(400).json({ error: \"Missing itemId or quantity\" });",
+    "pages/api/checkout.js:16:    console.warn(\"[checkout] Missing params:\", itemId, quantity);",
+    "pages/api/checkout.js:17:    return res.status(400).json({ error: \"Missing itemId or quantity\" });",
+    "[2025-10-19T14:08:56-04:00] refresh"
+  ]
+}

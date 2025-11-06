@@ -1,0 +1,1 @@
+jq '. + {resolutions: {"react":"19.1.1","react-dom":"19.1.1","react-native":"0.81.4","react-native-web":"^0.19.10"}}' package.json > tmp.json && mv tmp.json package.json && npm install metro@0.76.6 --legacy-peer-deps --force && npm install --legacy-peer-deps --force && npx expo start --no-dev --minify

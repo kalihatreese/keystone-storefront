@@ -1,0 +1,104 @@
+
+
+[
+  {
+    "id": "ashwagandha-gummies",
+    "name": "Ashwagandha Gummies",
+    "price": 41
+  },
+  {
+    "id": "blue-light-glasses",
+    "name": "Blue Light Glasses",
+    "price": 68
+  },
+  {
+    "id": "weighted-blanket",
+    "name": "Weighted Blanket",
+    "price": 88
+  },
+  {
+    "id": "nano-tape",
+    "name": "Nano Tape",
+    "price": 22
+  },
+  {
+    "id": "ergonomic-chair",
+    "name": "Ergonomic Chair",
+    "price": 116
+  },
+  {
+    "id": "air-fryer",
+    "name": "Air Fryer",
+    "price": 86
+  },
+  {
+    "id": "cbd-balm",
+    "name": "CBD Balm",
+    "price": 62
+  },
+  {
+    "id": "led-light-strips",
+    "name": "LED Light Strips",
+    "price": 39
+  },
+  {
+    "id": "melatonin-gummies",
+    "name": "Melatonin Gummies",
+    "price": 97
+  },
+  {
+    "id": "yoga-pants",
+    "name": "Yoga Pants",
+    "price": 117
+  },
+  {
+    "id": "tagry-bluetooth-headphones",
+    "name": "TAGRY Bluetooth Headphones",
+    "price": 46
+  },
+  {
+    "id": "apple-airpods-pro-2",
+    "name": "Apple AirPods Pro 2",
+    "price": 108
+  },
+  {
+    "id": "bose-ultra-open-earbuds",
+    "name": "Bose Ultra Open Earbuds",
+    "price": 63
+  },
+  {
+    "id": "smartwatch",
+    "name": "Smartwatch",
+    "price": 60
+  },
+  {
+    "id": "fitness-tracker",
+    "name": "Fitness Tracker",
+    "price": 81
+  },
+  {
+    "id": "smart-lock",
+    "name": "Smart Lock",
+    "price": 25
+  },
+  {
+    "id": "power-bank",
+    "name": "Power Bank",
+    "price": 21
+  },
+  {
+    "id": "instant-pot-duo",
+    "name": "Instant Pot Duo",
+    "price": 61
+  },
+  {
+    "id": "digital-kitchen-scale",
+    "name": "Digital Kitchen Scale",
+    "price": 77
+  },
+  {
+    "id": "wireless-earbuds",
+    "name": "Wireless Earbuds",
+    "price": 102
+  }
+]

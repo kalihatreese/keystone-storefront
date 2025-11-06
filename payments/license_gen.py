@@ -1,0 +1,1 @@
+def generate_license(product, plan):\n  import secrets, time, hmac, hashlib\n  token = secrets.token_hex(8)\n  timestamp = int(time.time())\n  signature = hmac.new(b"SECRET", f"{product}-{plan}-{token}".encode(), hashlib.sha256).hexdigest()\n  return f"{product}-{plan}-{token}-{timestamp}-{signature}"

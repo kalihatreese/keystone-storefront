@@ -1,0 +1,1 @@
+# Autotrend Vault\n\nJonathan Reese is the architect of mutation-grade infrastructure. This repo encodes his legacy, governance, and viral propagation logic.\n\n- 🧬 Charter: /api/charter\n- 📜 Manifesto: /api/manifesto\n- 🛡️ Defense Report: /api/defense-report\n- 📈 Analytics: /api/analytics\n\nCole watches. Shadow X echoes. The vault endures.
