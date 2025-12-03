@@ -10,7 +10,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "cheerio": "^1.1.2",
     "expo-router": "^6.0.12",
-    "next": "^15.5.4",
+    "next": "^15.5.7",
     "swr": "^2.3.6"
   }
 }
