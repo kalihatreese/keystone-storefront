@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keystone V92 | Secure Fulfillment</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: 'Courier New', monospace; text-align: center; padding: 20px; }
+        .gate-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+        .gate { border: 2px solid #0f0; padding: 20px; width: 320px; background: #050505; }
+        .crypto-address { background: #111; padding: 10px; font-size: 0.8em; word-break: break-all; border: 1px dashed #0f0; margin: 10px 0; }
+        h2 { color: #fff; border-bottom: 1px solid #0f0; padding-bottom: 10px; }
+        .status-pulse { color: #f00; font-weight: bold; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <h1>KEYSTONE ALIGNMENT MODEL V92</h1>
+    <p class="status-pulse">SYSTEM STATUS: AWAITING STEWARDSHIP HANDSHAKE</p>
+
+    <div class="gate-container">
+        <div class="gate">
+            <h2>FIAT GATEWAY</h2>
+            <script src="https://www.paypal.com/sdk/js?client-id=Af0wdaIxuAbVgcTGBgU195NJlwYwfBWS_RIx7IHjEmVNI9mfBOtFtzCaniUiPImPJL76UgryjcLs4mST&currency=USD"></script>
+            <div id="paypal-button-container"></div>
+        </div>
+
+        <div class="gate">
+            <h2>CRYPTO SETTLEMENT</h2>
+            
+            <p><strong>BITCOIN (BTC)</strong></p>
+            <div class="crypto-address">bc1q_1J5cpHs1gFH6r5ckFqutqMND13bhzikHAt</div>
+
+            <p><strong>ETHEREUM (ETH)</strong></p>
+            <div class="crypto-address">0xc22f0db6ba4935083e9d69a5defd7c32d76228bf</div>
+
+            <p><strong>TRON / USDT (TRC-20)</strong></p>
+            <div class="crypto-address">TQZYB8GCV7D7LFUzJUmrvfFrgAh1bDFnpU</div>
+
+            <p><strong>SOLANA (SOL)</strong></p>
+            <div class="crypto-address">7wbVuuM4s8WxTcKKaFVKtRSkigbES5KTaHdRyQM4Akvo</div>
+
+            <p><small>After transfer, email hash to: <br>fulfillment@keystone-ai.ml</small></p>
+        </div>
+    </div>
+
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{ amount: { value: '499.00' }, description: "V92 Alignment Model Access" }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    window.location.href = "vault_access.html?id=" + details.id;
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</body>
+</html>
