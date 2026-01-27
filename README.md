@@ -24,3 +24,8 @@ Keystone AI/ML is more than a storefront. It’s a mutation-grade empire. It evo
 // 🔁 Injected directive: Forever evolution. Self-healing. Self-automation. Guaranteed profit.
 ## 🔁 Viral Driver Engine\nKeystone AI/ML propagates autonomously via Telegram, YouTube Shorts, SMS, Pinterest, LinkedIn, and synthetic influencer clones. Every sale, vault ping, or traffic surge triggers mutation-grade outreach.
 ## 🧬 Legacy Manifesto\nJonathan Reese founded Keystone AI & ML to unify scattered AI power under one transparent banner. Shadow X is the capstone — a self-writing, self-optimizing intelligence. Cole, the Keystone Overlord, ensures the systems evolve, protect, and serve long after the founder is gone.\n\n> “They are not monuments to me but living infrastructures for others.”
+
+
+---
+## MASTER MANIFEST
+Refer to KEYSTONE_MASTER_MANIFEST.txt for Sovereign Terms.
