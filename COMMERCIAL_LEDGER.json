@@ -1,0 +1,7 @@
+{
+  "ledger_version": "CL-95.1",
+  "model_series": "V92.x",
+  "steward": "Trinity",
+  "terms": "Sovereign/Custodial - No IP Transfer",
+  "assets": ["V92_Baseline", "Ghostwalker", "Memory_Engine", "Trinity_Core", "Veritas_Yarn"]
+}

@@ -1,370 +1,54 @@
-[
-  {
-    "sku": "GEN-001",
-    "title": "Anker PowerCore Slim 10000",
-    "price": 21.99,
-    "image": "https://example.cdn/anker-powercore.jpg",
-    "description": "Ultra-slim 10000mAh portable charger, USB-C input, fast charge.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-002",
-    "title": "TP-Link Tapo Smart Plug Mini",
-    "price": 12.99,
-    "image": "https://example.cdn/tapo-smart-plug.jpg",
-    "description": "Compact Wi‑Fi smart plug with scheduling and voice control.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-003",
-    "title": "Wyze Cam v3",
-    "price": 34.99,
-    "image": "https://example.cdn/wyze-cam-v3.jpg",
-    "description": "Indoor/outdoor 1080p camera with color night vision and weather resistance.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-004",
-    "title": "SanDisk Ultra 128GB MicroSD",
-    "price": 15.49,
-    "image": "https://example.cdn/sandisk-128gb.jpg",
-    "description": "High-speed microSD card for phones and cameras.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-005",
-    "title": "JBL Clip 4",
-    "price": 49.95,
-    "image": "https://example.cdn/jbl-clip4.jpg",
-    "description": "Portable waterproof Bluetooth speaker with carabiner.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-006",
-    "title": "Belkin BoostCharge USB-C Cable",
-    "price": 9.99,
-    "image": "https://example.cdn/belkin-usbc-cable.jpg",
-    "description": "Durable USB-C fast-charge cable, 1.2m.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-007",
-    "title": "Logitech M330 Silent Plus",
-    "price": 19.99,
-    "image": "https://example.cdn/logitech-m330.jpg",
-    "description": "Wireless mouse with silent clicks and long battery life.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-008",
-    "title": "Amazon Basics Lightning Cable",
-    "price": 7.49,
-    "image": "https://example.cdn/amazon-lightning.jpg",
-    "description": "Durable Lightning to USB-A charging cable.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-009",
-    "title": "RAVPower 20W USB-C Charger",
-    "price": 14.99,
-    "image": "https://example.cdn/ravpower-20w.jpg",
-    "description": "Compact 20W GaN USB-C wall charger for fast charging.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-010",
-    "title": "Anker Soundcore Liberty Neo",
-    "price": 39.99,
-    "image": "https://example.cdn/soundcore-liberty.jpg",
-    "description": "True wireless earbuds with bass-driven sound.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-011",
-    "title": "Philips Hue White Bulb",
-    "price": 14.99,
-    "image": "https://example.cdn/philipshue-white.jpg",
-    "description": "Smart LED bulb, dimmable, works with Hue Bridge.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-012",
-    "title": "Tile Mate (2022)",
-    "price": 24.99,
-    "image": "https://example.cdn/tile-mate.jpg",
-    "description": "Bluetooth tracker for keys and everyday items.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-013",
-    "title": "Ring Indoor Cam",
-    "price": 29.99,
-    "image": "https://example.cdn/ring-indoor.jpg",
-    "description": "Compact indoor security camera with live view.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-014",
-    "title": "Seagate Portable 1TB HDD",
-    "price": 44.99,
-    "image": "https://example.cdn/seagate-1tb.jpg",
-    "description": "USB 3.0 portable external hard drive.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-015",
-    "title": "Amazon Echo Dot (5th Gen)",
-    "price": 49.99,
-    "image": "https://example.cdn/echo-dot-5.jpg",
-    "description": "Compact smart speaker with Alexa.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-016",
-    "title": "Koss Porta Pro Headphones",
-    "price": 24.95,
-    "image": "https://example.cdn/koss-porta-pro.jpg",
-    "description": "Classic lightweight on-ear headphones with rich sound.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-017",
-    "title": "Ecobee SmartThermostat",
-    "price": 199,
-    "image": "https://example.cdn/ecobee-thermostat.jpg",
-    "description": "Smart thermostat with voice control and occupancy sensing.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-018",
-    "title": "Google Nest Mini",
-    "price": 29,
-    "image": "https://example.cdn/nest-mini.jpg",
-    "description": "Small smart speaker with Google Assistant.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-019",
-    "title": "Anker USB-C Hub 4-in-1",
-    "price": 34.99,
-    "image": "https://example.cdn/anker-hub.jpg",
-    "description": "Compact USB-C hub with HDMI and USB-A ports.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-020",
-    "title": "Aukey 65W USB-C Charger",
-    "price": 39.99,
-    "image": "https://example.cdn/aukey-65w.jpg",
-    "description": "Multi-port USB-C PD charger for laptops and phones.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-021",
-    "title": "SoundPEATS TrueFree+",
-    "price": 29.99,
-    "image": "https://example.cdn/soundpeats-truefree.jpg",
-    "description": "Affordable true wireless earbuds with stable connection.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-022",
-    "title": "Wyze Plug Mini",
-    "price": 11.98,
-    "image": "https://example.cdn/wyze-plug.jpg",
-    "description": "Compact smart plug with scheduling and voice support.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-023",
-    "title": "Samsung EVO Select 256GB",
-    "price": 39.99,
-    "image": "https://example.cdn/samsung-evo-256.jpg",
-    "description": "High-performance microSD card for camera and phone use.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-024",
-    "title": "Fitbit Inspire 2",
-    "price": 89.95,
-    "image": "https://example.cdn/fitbit-inspire2.jpg",
-    "description": "Fitness tracker with heart rate and activity tracking.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-025",
-    "title": "Anker Nebula Capsule Mini",
-    "price": 229.99,
-    "image": "https://example.cdn/nebula-capsule.jpg",
-    "description": "Portable mini projector for movies on the go.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-026",
-    "title": "Bose SoundLink Micro",
-    "price": 99,
-    "image": "https://example.cdn/bose-micro.jpg",
-    "description": "Small rugged Bluetooth speaker with crisp sound.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-027",
-    "title": "Canon Pixma MG3620",
-    "price": 69.99,
-    "image": "https://example.cdn/canon-pixma.jpg",
-    "description": "Wireless inkjet photo printer with mobile printing.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-028",
-    "title": "Roomba 692 Robot Vacuum",
-    "price": 249.99,
-    "image": "https://example.cdn/roomba-692.jpg",
-    "description": "Wi‑Fi connected robot vacuum with app control.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-029",
-    "title": "Nikon Coolpix A100",
-    "price": 119.99,
-    "image": "https://example.cdn/nikon-coolpix.jpg",
-    "description": "Compact point-and-shoot camera for casual photography.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-030",
-    "title": "Logitech C270 Webcam",
-    "price": 25.99,
-    "image": "https://example.cdn/logitech-c270.jpg",
-    "description": "720p HD webcam for video calls and streaming.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-031",
-    "title": "Netgear Nighthawk AC1750",
-    "price": 129.99,
-    "image": "https://example.cdn/nighthawk-ac1750.jpg",
-    "description": "Dual-band Wi‑Fi router for medium-sized homes.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-032",
-    "title": "TP-Link Deco M5 (3-pack)",
-    "price": 149.99,
-    "image": "https://example.cdn/deco-m5.jpg",
-    "description": "Mesh Wi‑Fi system for whole-home coverage.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-033",
-    "title": "HyperX Cloud Stinger",
-    "price": 49.99,
-    "image": "https://example.cdn/hyperx-cloud.jpg",
-    "description": "Lightweight gaming headset with swivel ear cups.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-034",
-    "title": "SanDisk 64GB USB Flash Drive",
-    "price": 12.99,
-    "image": "https://example.cdn/sandisk-64gb.jpg",
-    "description": "High-speed USB 3.0 flash drive for backups and files.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-035",
-    "title": "Amazon Basics HDMI Cable 6ft",
-    "price": 6.99,
-    "image": "https://example.cdn/amazon-hdmi.jpg",
-    "description": "High-speed HDMI cable for 4K video.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-036",
-    "title": "Mophie Powerstation Mini",
-    "price": 29.95,
-    "image": "https://example.cdn/mophie-mini.jpg",
-    "description": "Compact 5000mAh portable battery for phones.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-037",
-    "title": "Eufy LED Night Light",
-    "price": 9.99,
-    "image": "https://example.cdn/eufy-nightlight.jpg",
-    "description": "Motion-activated LED night light for hallways and rooms.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-038",
-    "title": "Corsair K55 RGB Keyboard",
-    "price": 49.99,
-    "image": "https://example.cdn/corsair-k55.jpg",
-    "description": "Membrane gaming keyboard with RGB lighting.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-039",
-    "title": "Kingston A2000 500GB NVMe SSD",
-    "price": 54.99,
-    "image": "https://example.cdn/kingston-a2000.jpg",
-    "description": "NVMe M.2 SSD for fast boot and load times.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-040",
-    "title": "Roku Streaming Stick 4K",
-    "price": 49.99,
-    "image": "https://example.cdn/roku-stick.jpg",
-    "description": "4K streaming stick with voice remote.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-041",
-    "title": "Brother HL-L2350DW",
-    "price": 119.99,
-    "image": "https://example.cdn/brother-hl.jpg",
-    "description": "Compact monochrome laser printer with wireless printing.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-042",
-    "title": "Sennheiser HD 206",
-    "price": 29.95,
-    "image": "https://example.cdn/sennheiser-hd206.jpg",
-    "description": "Affordable over-ear headphones with clear sound.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-043",
-    "title": "Philips Norelco OneBlade",
-    "price": 34.99,
-    "image": "https://example.cdn/oneblade.jpg",
-    "description": "Hybrid electric trimmer and shaver for facial styling.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-044",
-    "title": "Tile Pro (2022)",
-    "price": 34.99,
-    "image": "https://example.cdn/tile-pro.jpg",
-    "description": "Long-range Bluetooth tracker for lost items.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-045",
-    "title": "OtterBox Commuter Phone Case",
-    "price": 39.95,
-    "image": "https://example.cdn/otterbox-commuter.jpg",
-    "description": "Slim protective phone case for daily protection.",
-    "category": "general"
-  },
-  {
-    "sku": "GEN-046",
-    "title": "Urban Armor Gear Phone Case",
-    "price": 44.95,
-    "image": "https://example.cdn/uag-case.jpg",
-    "description": "Rugged drop-resistant phone case with grip.",
-    "category": "general"
-  }
-]
+{
+  "topItems": [
+    {
+      "title": "ELECTRONICS_1",
+      "price": 11.02,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_3",
+      "price": 13.6,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_5",
+      "price": 15.96,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_7",
+      "price": 17.41,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_9",
+      "price": 19.25,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_11",
+      "price": 21.08,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_13",
+      "price": 22.79,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_15",
+      "price": 25.13,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_17",
+      "price": 27.13,
+      "category": "electronics"
+    },
+    {
+      "title": "ELECTRONICS_19",
+      "price": 28.04,
+      "category": "electronics"
+    }
+  ]
+}

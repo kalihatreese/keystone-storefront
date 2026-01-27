@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 const BASE = process.env.NEXT_PUBLIC_BASE ?? "https://kalihatreese.github.io/Autotrend_vault";
-const URL  = ;
+const URL = `${BASE}/products.json`;
 export async function GET() {
   try {
     const r = await fetch(URL, { cache: "no-store" });

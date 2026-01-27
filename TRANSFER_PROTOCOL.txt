@@ -1,0 +1,1 @@
+CRTP-V1: Air-gapped handover only. No cloud transfer for assets > 0M. Hash-verification required via Trinity Ledger.
