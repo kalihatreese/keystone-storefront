@@ -28,3 +28,20 @@ def verify(email: EmailStr, key: str):
     if not hmac.compare_digest(expected, key):
         raise HTTPException(status_code=400, detail="invalid key")
     return {"ok": True, "email": email, "key": key}
+
+@app.route('/v92-gateway')
+def v92_gateway():
+    return """
+    <div style="background:#000; color:#00ff00; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:monospace;">
+        <h1 style="border: 2px solid #00ff00; padding: 20px;">KEYSTONE V92 STOREFRONT</h1>
+        <p style="color:#39CCCC;">Resonance Level: Active | Harmonic Flow: 101010</p>
+        <a href="/" style="margin-top:20px; color:#fff; text-decoration:none; border:1px solid #fff; padding:10px 20px;">[ RETURN TO CORE ]</a>
+        <br>
+        <button onclick="alert('Accessing V27 Industrial Backbone...')" style="background:#0074D9; color:white; border:none; padding:15px; cursor:pointer;">PURCHASE V92 LICENSE</button>
+    </div>
+    """
+
+@app.route('/keystone-v92-store')
+def v92_storefront_standalone():
+    # This is a standalone fragment for the V27 backbone
+    return render_template('storefront.html') 
