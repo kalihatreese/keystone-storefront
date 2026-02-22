@@ -1,8 +1,0 @@
-// Copyright (c) 2025 ReeseLimitedLLC. All rights reserved.
-// SPDX-License-Identifier: LicenseRef-ReeseLimitedLLC-Proprietary
-{
-  "extends": "expo/tsconfig.base",
-  "compilerOptions": {
-    "strict": true
-  }
-}

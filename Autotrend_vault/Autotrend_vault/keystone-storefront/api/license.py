@@ -1,1 +1,0 @@
-from fastapi import FastAPI\napp = FastAPI()\n@app.get("/api/license/verify")\ndef verify_license(key: str):\n  return {"status": "valid", "features": ["dashboard", "downloads"], "expires": "2026-10-11"}

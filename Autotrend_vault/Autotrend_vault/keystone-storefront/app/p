@@ -1,1 +1,0 @@
-import products from '../data/products.json'; export default function Page(){return <main><h1>Keystone Storefront</h1><ul>{products.map(p=><li key={p.id}>{p.name}</li>)}</ul></main>}

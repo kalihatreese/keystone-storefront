@@ -1,1 +1,0 @@
-node -e "const fs=require('fs'),data=require('./data/models.json');fs.writeFileSync('./analytics-dashboard.json',JSON.stringify({topItems:data.items.filter(i=>i.category==='electronics').slice(0,10)},null,2));console.log('📊 Top items injected — dashboard echo sealed');" && npm run dev

@@ -1,1 +1,0 @@
-import { verifyLicense } from "../license-request"; export default function Admin() { const license = verifyLicense("LIC-STEWARDSHIP"); if (!license.valid) return <p>Access Denied</p>; return (<div><h1>Admin Panel</h1><p>Tier: {license.tier}</p><p>Welcome, Cole and Shadow X</p></div>); }
